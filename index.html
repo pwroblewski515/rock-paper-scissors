@@ -11,5 +11,19 @@
             return "Scissors";
         }
     }
+
+    function singleRound(playerSelection, computerSelection){
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substr(1).toLowerCase();
+
+        if (playerSelection === computerSelection){
+            return "Draw!"
+        } else if ((playerSelection === "Rock" && computerSelection === "Paper") ||
+        (playerSelection === "Paper" && computerSelection === "Scissors") ||
+        (playerSelection === "Scissors" && computerSelection === "Rock")){
+            return `You lose! ${computerSelection} beats ${playerSelection}`;
+        } else {
+            return `You win! ${playerSelection} beats ${computerSelection}`;
+        }
+    }
 </script>
 </html>
