@@ -9,7 +9,7 @@ function game(){
             let playerSelection = getPlayerSelection();
             let roundOutput = playRound(playerSelection, computerPlay());
             updateScore(roundOutput);
-            outputResultAndScore(roundOutput, playerScore, computerScore);
+            outputResultAndScore(roundOutput);
         }
         outputWinner(playerScore);
     }
@@ -51,7 +51,7 @@ function game(){
         }
     }
 
-    function outputResultAndScore(roundOutput, playerScore, computerScore) {
+    function outputResultAndScore(roundOutput) {
         console.log(roundOutput);
         console.log(`Player score: ${playerScore} \nComputer Score: ${computerScore}`);
     }
@@ -64,4 +64,7 @@ function game(){
         }
     }
 </script>
+<body>
+    <h1>This game is currently only in the console.</h1>
+</body>
 </html>
