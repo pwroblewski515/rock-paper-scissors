@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
+    let playerScore = 0;
+    let computerScore = 0;
+
+function game(){
+        while (playerScore < 3 && computerScore < 3){
+            let playerSelection = getPlayerSelection();
+            let roundOutput = playRound(playerSelection, computerPlay());
+            updateScore(roundOutput);
+            outputResultAndScore(roundOutput, playerScore, computerScore);
+        }
+        outputWinner(playerScore);
+    }
+
     function computerPlay(){
         let randomNum = Math.floor(Math.random() * 3);
         if (randomNum === 0){
@@ -12,7 +25,7 @@
         }
     }
 
-    function singleRound(playerSelection, computerSelection){
+    function playRound(playerSelection, computerSelection){
         playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substr(1).toLowerCase();
 
         if (playerSelection === computerSelection){
@@ -23,6 +36,31 @@
             return `You lose! ${computerSelection} beats ${playerSelection}`;
         } else {
             return `You win! ${playerSelection} beats ${computerSelection}`;
+        }
+    }
+
+    function getPlayerSelection() {
+        return prompt("Rock, paper, or scissors? ");
+    }
+
+    function updateScore(roundOutput){
+        if (roundOutput.includes("You win!")) {
+            playerScore++;
+        } else if (roundOutput.includes("You lose!")){
+            computerScore++;
+        }
+    }
+
+    function outputResultAndScore(roundOutput, playerScore, computerScore) {
+        console.log(roundOutput);
+        console.log(`Player score: ${playerScore} \nComputer Score: ${computerScore}`);
+    }
+
+    function outputWinner(playerScore){
+        if (playerScore === 3){
+            console.log("You win! Want to play again?");
+        } else {
+            console.log("Computer wins! Better luck next time.");
         }
     }
 </script>
