@@ -3,6 +3,7 @@
 <script>
     let playerScore = 0;
     let computerScore = 0;
+    const choices = ["Rock", "Paper", "Scissors"];
 
 function game(){
         while (playerScore < 3 && computerScore < 3){
@@ -17,22 +18,20 @@ function game(){
     function computerPlay(){
         let randomNum = Math.floor(Math.random() * 3);
         if (randomNum === 0){
-            return "Rock";
+            return choices[0];
         } else if (randomNum === 1){
-            return "Paper";
+            return choices[1];
         } else if (randomNum === 2){
-            return "Scissors";
+            return choices[2];
         }
     }
 
     function playRound(playerSelection, computerSelection){
-        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substr(1).toLowerCase();
-
         if (playerSelection === computerSelection){
             return "Draw!"
-        } else if ((playerSelection === "Rock" && computerSelection === "Paper") ||
-        (playerSelection === "Paper" && computerSelection === "Scissors") ||
-        (playerSelection === "Scissors" && computerSelection === "Rock")){
+        } else if ((playerSelection === choices[0] && computerSelection === choices[1]) ||
+        (playerSelection === choices[1] && computerSelection === choices[2]) ||
+        (playerSelection === choices[2] && computerSelection === choices[1])){
             return `You lose! ${computerSelection} beats ${playerSelection}`;
         } else {
             return `You win! ${playerSelection} beats ${computerSelection}`;
@@ -40,7 +39,9 @@ function game(){
     }
 
     function getPlayerSelection() {
-        return prompt("Rock, paper, or scissors? ");
+        let selection = prompt("Rock, paper, or scissors? ");
+        selection = selection.charAt(0).toUpperCase() + selection.substr(1).toLowerCase();
+        return selection;
     }
 
     function updateScore(roundOutput){
