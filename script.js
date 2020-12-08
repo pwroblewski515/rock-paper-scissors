@@ -1,12 +1,15 @@
 let playerScore = 0;
 let computerScore = 0;
+let currentRound = 0;
 
 const playerScoreOutput = document.querySelector(".player-score");
 const computerScoreOutput = document.querySelector(".computer-score");
+const roundOutput = document.querySelector(".round");
 const roundOutcome = document.querySelector(".round-outcome");
 
 playerScoreOutput.textContent = getPlayerScore();
 computerScoreOutput.textContent = getComputerScore();
+roundOutput.textContent = getCurrentRound();
 
 const choices = ["rock", "paper", "scissors"];
 const outcomes = ["draw", "player", "computer"]
@@ -24,6 +27,10 @@ function getPlayerScore() {
 
 function getComputerScore() {
   return `Computer score: ${computerScore}`;
+}
+
+function getCurrentRound() {
+  return `Round: ${currentRound}`;
 }
 
 function playRound(playerSelection) {
