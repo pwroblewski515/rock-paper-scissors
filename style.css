@@ -1,0 +1,20 @@
+h1 {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding: 25px;
+}
+
+div {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    padding: 25px;
+}
+
+p {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+}
