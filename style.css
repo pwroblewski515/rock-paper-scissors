@@ -1,3 +1,7 @@
+body {
+    background-image: url("images/plaid.jpg");
+}
+
 h1 {
     width: 50%;
     margin: auto;
@@ -21,7 +25,7 @@ p {
 }
 
 .paper {
-    background-image: url("paper.png");
+    background-image: url("images/tissue-paper.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 50px;
@@ -30,7 +34,7 @@ p {
 }
 
 .rock {
-    background-image: url("rock.png");
+    background-image: url("images/rock-and-roll.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 50px;
@@ -38,9 +42,10 @@ p {
 }
 
 .scissors {
-    background-image: url("scissors.png");
+    background-image: url("images/peace.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
+    transform: rotate(90deg);
 }
