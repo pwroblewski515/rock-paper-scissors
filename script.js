@@ -99,6 +99,9 @@ function checkForWinner() {
 function reset() {
   playerScore = 0;
   computerScore = 0;
+  currentRound = 0;
   playerScoreOutput.textContent = getPlayerScore();
   computerScoreOutput.textContent = getComputerScore();
+  roundOutput.textContent = getCurrentRound();
+  roundOutcome.textContent = "";
 }

@@ -1,13 +1,11 @@
 body {
-    background-image: url("images/plaid.jpg");
+    background-color: #f0f3f7;
 }
 
 h1 {
-    width: 50%;
     margin: auto;
     text-align: center;
     padding: 25px;
-    
 }
 
 div {
@@ -24,28 +22,36 @@ p {
     padding: 5px;
 }
 
-.paper {
-    background-image: url("images/tissue-paper.svg");
+button {
+    width: 75px;
+    height: 75px;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
-    
+    background-color: transparent;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 3px 4px 4px 0.2px grey;
+    margin: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    width: 100px;
+    height: 100px;
+}
+
+button:active {
+    background-position: 5px 0px;
+}
+
+.paper {
+    background-image: url("images/tissue-paper.svg");   
 }
 
 .rock {
     background-image: url("images/rock-and-roll.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
 }
 
 .scissors {
     background-image: url("images/peace.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
-    transform: rotate(90deg);
 }
