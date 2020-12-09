@@ -77,10 +77,12 @@ function updateScore(winner) {
     playerScore++;
     currentRound++;
     playerScoreOutput.textContent = getPlayerScore();
+    roundOutput.textContent = getCurrentRound();
   } else if (winner === outcomes[2]) {
     computerScore++;
     currentRound++;
     computerScoreOutput.textContent = getComputerScore();
+    roundOutput.textContent = getCurrentRound();
   }
 }
 
