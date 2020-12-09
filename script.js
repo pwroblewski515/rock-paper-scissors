@@ -75,9 +75,11 @@ function getWinner(playerSelection, computerSelection) {
 function updateScore(winner) {
   if (winner === outcomes[1]) {
     playerScore++;
+    currentRound++;
     playerScoreOutput.textContent = getPlayerScore();
   } else if (winner === outcomes[2]) {
     computerScore++;
+    currentRound++;
     computerScoreOutput.textContent = getComputerScore();
   }
 }
