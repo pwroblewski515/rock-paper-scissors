@@ -41,7 +41,7 @@ button:hover {
 }
 
 button:active {
-    background-position: 5px 0px;
+    background-position: 10px 10px;
 }
 
 .paper {
@@ -54,4 +54,23 @@ button:active {
 
 .scissors {
     background-image: url("images/peace.svg");
+}
+
+.play-again {
+    height: 50px;
+    width: 100px;
+    visibility: hidden;
+}
+
+.play-again-visible {
+    visibility: visible;
+}
+
+.play-again:hover {
+    height: 60px;
+    width: 120px;
+}
+
+.round-outcome {
+    padding-bottom: 30px;
 }

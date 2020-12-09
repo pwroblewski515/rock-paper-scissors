@@ -1,11 +1,14 @@
 let playerScore = 0;
 let computerScore = 0;
 let currentRound = 0;
+let gameOver = false;
 
 const playerScoreOutput = document.querySelector(".player-score");
 const computerScoreOutput = document.querySelector(".computer-score");
 const roundOutput = document.querySelector(".round");
 const roundOutcome = document.querySelector(".round-outcome");
+const playAgainButton = document.querySelector(".play-again");
+const gameOutcome = document.querySelector(".game-outcome");
 
 playerScoreOutput.textContent = getPlayerScore();
 computerScoreOutput.textContent = getComputerScore();
@@ -14,12 +17,14 @@ roundOutput.textContent = getCurrentRound();
 const choices = ["rock", "paper", "scissors"];
 const outcomes = ["draw", "player", "computer"]
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".btn-container > button");
 buttons.forEach((button) => {
   button.addEventListener("click", function (e) {
     playRound(e.target.className);
   });
 });
+
+playAgainButton.addEventListener("click", reset);
 
 function getPlayerScore() {
   return `Player score: ${playerScore}`;
@@ -34,6 +39,7 @@ function getCurrentRound() {
 }
 
 function playRound(playerSelection) {
+  if (gameOver) return;
   computerSelection = computerPlay();
   let winner = getWinner(playerSelection, computerSelection);
   updateScore(winner);
@@ -88,15 +94,32 @@ function displayOutcome(winner, playerSelection, computerSelection) {
 
 function checkForWinner() {
   if (playerScore === 3) {
-    alert("You win! Play again?");
-    reset();
+    gameOver = true;
+    displayWinner("player");
+    togglePlayAgain();
   } else if (computerScore === 3) {
-    alert("You lose! Try again?");
-    reset();
+    gameOver = true;
+    displayWinner("computer");
+    togglePlayAgain();
   }
 }
 
+function displayWinner(winner) {
+  if (winner === "player"){
+    gameOutcome.textContent = "You win! Congrats!";
+  } else {
+    gameOutcome.textContent = "You lose! Better luck next time.";
+  }
+   
+}
+
+function togglePlayAgain() {
+    playAgainButton.classList.toggle("play-again-visible");
+}
+
 function reset() {
+  togglePlayAgain();
+  gameOver = false;
   playerScore = 0;
   computerScore = 0;
   currentRound = 0;
@@ -104,4 +127,5 @@ function reset() {
   computerScoreOutput.textContent = getComputerScore();
   roundOutput.textContent = getCurrentRound();
   roundOutcome.textContent = "";
+  gameOutcome.textContent = "";
 }
