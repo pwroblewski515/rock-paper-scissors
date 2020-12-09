@@ -3,6 +3,7 @@ h1 {
     margin: auto;
     text-align: center;
     padding: 25px;
+    
 }
 
 div {
@@ -17,4 +18,17 @@ p {
     text-align: center;
     margin: auto;
     padding: 5px;
+}
+
+.paper {
+    width: 50px;
+    height: auto;
+}
+
+.rock {
+    width: 50px;
+}
+
+.scissors {
+    width: 50px;
 }

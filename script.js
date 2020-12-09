@@ -14,7 +14,7 @@ roundOutput.textContent = getCurrentRound();
 const choices = ["rock", "paper", "scissors"];
 const outcomes = ["draw", "player", "computer"]
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll("img");
 buttons.forEach((button) => {
   button.addEventListener("click", function (e) {
     playRound(e.target.className);
