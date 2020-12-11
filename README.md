@@ -7,4 +7,4 @@ JS functions<br>
 Todo:<br>
 Work on the UI<br>
 
-![Screenshot](images/rock-paper-scissors.png)
+![Screenshot](images/website.png)
