@@ -1,15 +1,19 @@
 body {
     background-color: #f0f3f7;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
     margin: auto;
     text-align: center;
     padding: 25px;
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 div {
-    width: 50%;
+    width: 80%;
     text-align: center;
     margin: auto;
     padding: 25px;
@@ -44,15 +48,15 @@ button:active {
     background-position: 10px 10px;
 }
 
-.paper {
+.paper-btn{
     background-image: url("images/tissue-paper.svg");   
 }
 
-.rock {
+.rock-btn {
     background-image: url("images/rock-and-roll.svg");
 }
 
-.scissors {
+.scissors-btn {
     background-image: url("images/peace.svg");
 }
 
@@ -69,6 +73,10 @@ button:active {
 .play-again:hover {
     height: 60px;
     width: 120px;
+}
+
+.game-output {
+    display: flex;
 }
 
 .round-outcome {

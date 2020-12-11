@@ -14,13 +14,21 @@ playerScoreOutput.textContent = getPlayerScore();
 computerScoreOutput.textContent = getComputerScore();
 roundOutput.textContent = getCurrentRound();
 
-const choices = ["rock", "paper", "scissors"];
-const outcomes = ["draw", "player", "computer"]
+const choices = Object.freeze({
+  ROCK: "Rock",
+  PAPER: "Paper",
+  SCISSORS: "Scissors"
+});
+const roundOutcomes = Object.freeze({
+  DRAW: 1,
+  PLAYER_WIN: 2,
+  COMPUTER_WIN: 3
+});
 
 const buttons = document.querySelectorAll(".btn-container > button");
 buttons.forEach((button) => {
-  button.addEventListener("click", function (e) {
-    playRound(e.target.className);
+  button.addEventListener("click", function(e) {
+    playRound(e.target.dataset.key);
   });
 });
 
@@ -41,44 +49,44 @@ function getCurrentRound() {
 function playRound(playerSelection) {
   if (gameOver) return;
   computerSelection = computerPlay();
-  let winner = getWinner(playerSelection, computerSelection);
-  updateScore(winner);
-  displayOutcome(winner, playerSelection, computerSelection);
-  checkForWinner();
+  let roundWinner = getRoundWinner(playerSelection, computerSelection);
+  updateScore(roundWinner);
+  displayRoundOutcome(roundWinner, playerSelection, computerSelection);
+  checkForGameWinner();
 }
 
 function computerPlay() {
   let randomNum = Math.floor(Math.random() * 3);
   if (randomNum === 0) {
-    return choices[0];
+    return choices.ROCK;
   } else if (randomNum === 1) {
-    return choices[1];
+    return choices.PAPER;
   } else if (randomNum === 2) {
-    return choices[2];
+    return choices.SCISSORS;
   }
 }
 
-function getWinner(playerSelection, computerSelection) {
+function getRoundWinner(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return outcomes[0];
+    return roundOutcomes.DRAW;
   } else if (
-    (playerSelection === choices[0] && computerSelection === choices[1]) ||
-    (playerSelection === choices[1] && computerSelection === choices[2]) ||
-    (playerSelection === choices[2] && computerSelection === choices[1])
+    (playerSelection === choices.ROCK && computerSelection === choices.PAPER) ||
+    (playerSelection === choices.PAPER && computerSelection === choices.SCISSORS) ||
+    (playerSelection === choices.SCISSORS && computerSelection === choices.PAPER)
   ) {
-    return outcomes[2];
+    return roundOutcomes.COMPUTER_WIN;
   } else {
-    return outcomes[1];
+    return roundOutcomes.PLAYER_WIN;
   }
 }
 
 function updateScore(winner) {
-  if (winner === outcomes[1]) {
+  if (winner === roundOutcomes.PLAYER_WIN) {
     playerScore++;
     currentRound++;
     playerScoreOutput.textContent = getPlayerScore();
     roundOutput.textContent = getCurrentRound();
-  } else if (winner === outcomes[2]) {
+  } else if (winner === roundOutcomes.COMPUTER_WIN) {
     computerScore++;
     currentRound++;
     computerScoreOutput.textContent = getComputerScore();
@@ -86,17 +94,17 @@ function updateScore(winner) {
   }
 }
 
-function displayOutcome(winner, playerSelection, computerSelection) {
-    if (winner === outcomes[0]){
+function displayRoundOutcome(winner, playerSelection, computerSelection) {
+    if (winner === roundOutcomes.DRAW){
         roundOutcome.textContent = `Draw! ${playerSelection} ties ${computerSelection}`;
-    } else if (winner === outcomes[1]){
+    } else if (winner === roundOutcomes.PLAYER_WIN){
         roundOutcome.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
     } else {
         roundOutcome.textContent = `Computer wins! ${computerSelection} beats ${playerSelection}`;
     }
 }
 
-function checkForWinner() {
+function checkForGameWinner() {
   if (playerScore === 3) {
     gameOver = true;
     displayWinner("player");
